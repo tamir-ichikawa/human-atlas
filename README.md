@@ -2,6 +2,10 @@
 
 実際の人体モデルを使った日本語の教育用3D図鑑です。
 
+**[ブラウザで3Dアプリを開く](https://tamir-ichikawa.github.io/human-atlas/)**
+
+公開版はインストール不要です。初回に約112MBの人体モデルデータを読み込むため、回線速度によって表示まで時間がかかります。
+
 ![Human Atlasの心臓3D表示](docs/heart-preview.png)
 
 BodyParts3Dの2,234メッシュを収録し、部位の検索、単独表示、分解表示に対応しています。人体データとライブラリを同梱しているため、ダウンロード後はローカルで探索できます。
@@ -68,6 +72,10 @@ WebGL 2・ES Modules・DecompressionStream対応の現行ブラウザを想定�
 - `server.mjs`, `start.cmd`：ローカル起動
 - `scripts/prepare_assets.py`：元のOBJからの変換スクリプト（numpyが必要）
 - `THIRD_PARTY_NOTICES.md`：利用条件と変更内容
+
+## Web公開
+
+GitHub Pagesで `dist/` を公開します。`main` ブランチのアプリファイルを更新すると、`.github/workflows/pages.yml` が自動で反映します。GitHubリポジトリの Settings → Pages → Source は **GitHub Actions** を使用します。
 
 ## 元データから再生成する場合
 
