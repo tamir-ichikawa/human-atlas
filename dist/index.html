@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f4f1e9">
+  <meta name="description" content="人体を回して、ほどいて、理解する。実際の解剖モデルによるインタラクティブな日本語3D図鑑。">
+  <title>Human Atlas — からだを、立体でひもとく。</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./style.css">
+  <script type="importmap">{"imports":{"three":"./vendor/three.module.js"}}</script>
+</head>
+<body>
+  <a class="skip" href="#explorer">3Dエリアへ移動</a>
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="Human Atlas ホーム"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 36 36"><path d="M12 4v28M24 4v28M5 18h26M12 8l12 20M24 8L12 28"/></svg></span><span>Human <i>Atlas</i><small>からだを、立体でひもとく。</small></span></a>
+    <div class="edition"><span class="tiny-dot"></span> INTERACTIVE ANATOMY <span class="edition-no">VOL. 01</span></div>
+    <nav class="top-actions" aria-label="アプリのメニュー"><button id="help-button" class="text-button">操作ガイド <span aria-hidden="true">↗</span></button><button id="credits-button" class="text-button">この図鑑について</button></nav>
+  </header>
+  <main class="workspace">
+    <aside id="library" class="library" aria-label="部位を探す">
+      <div class="library-top"><span class="eyebrow">THE COLLECTION</span><h1>からだの地図</h1><p>気になる場所から、見つけよう。</p></div>
+      <label class="search-wrap"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6.5"/><path d="m15 15 5 5"/></svg><input id="search" type="search" autocomplete="off" placeholder="心臓・heart・部品ID…" aria-label="部位を検索"><kbd>/</kbd></label>
+      <div class="section-label"><h2>表示する系統</h2><button id="all-systems" class="quiet-button">すべて</button></div>
+      <div id="systems" class="systems"></div>
+      <div class="section-label part-heading"><h2 id="list-heading">主な部位</h2><span id="result-count"></span></div>
+      <div id="part-list" class="part-list" aria-label="部位の一覧"></div>
+      <button id="browse-all" class="browse-button">すべての部品を探す <span>↗</span></button>
+      <div class="library-foot"><span class="tiny-dot"></span><span>BodyParts3D 4.0<small><b id="total-count">2,234</b> pieces · 実際の解剖モデル</small></span></div>
+    </aside>
+    <section id="explorer" class="explorer" aria-label="3D人体エクスプローラー" tabindex="-1">
+      <div class="stage-heading"><div><span class="eyebrow">EXPLORE THE HUMAN BODY</span><h2>見る。ほどく。<em>わかる。</em></h2></div><span id="model-badge" class="model-badge">全身 / 前面</span></div>
+      <div id="viewport" class="viewport" aria-label="人体モデル。ドラッグで回転、ホイールで拡大縮小" tabindex="0">
+        <div id="loader" class="loader"><span class="loader-orbit"></span><strong>からだの地図をひらいています</strong><span id="load-detail">実際の3Dデータを読み込み中…</span><div class="progress-track"><i id="load-progress"></i></div></div>
+        <div class="ruler" aria-hidden="true"><span>SUPERIOR</span><i></i><span>INFERIOR</span></div>
+        <div id="hover-label" class="hover-label" hidden></div>
+      </div>
+      <div class="stage-tools" aria-label="視点の操作"><div class="view-presets"><button data-view="front" aria-pressed="true" class="active" aria-label="前面から見る">前面</button><button data-view="back" aria-pressed="false" aria-label="背面から見る">背面</button><button data-view="side" aria-pressed="false" aria-label="側面から見る">側面</button></div><div class="zoom-tools"><button id="zoom-in" aria-label="拡大">＋</button><button id="zoom-out" aria-label="縮小">−</button><button id="fit-view" aria-label="表示中の部位を画面に収める">⤢</button></div></div>
+      <div class="stage-caption"><span><i class="tiny-dot"></i><b id="visible-count">—</b> 個の部品を表示</span><button id="rotate-button" aria-pressed="false"><span aria-hidden="true">↻</span> 自動回転</button></div>
+      <div class="control-deck">
+        <div class="mode-tabs" role="group" aria-label="表示モード"><button id="body-mode" class="active" aria-pressed="true"><span aria-hidden="true">⊕</span> 人体ビュー</button><button id="inventory-mode" aria-pressed="false"><span aria-hidden="true">▦</span> 部品を並べる</button></div>
+        <div id="explode-controls" class="explode-controls"><div class="slider-label"><label for="explode">構造をひらく</label><output id="explode-value" for="explode">0%</output></div><input id="explode" type="range" min="0" max="100" value="0" step="1"><div class="slider-ends"><span>組み立て</span><span>分解</span></div></div>
+        <div id="inventory-controls" class="inventory-controls" hidden><button id="inventory-prev" aria-label="前の部品ページ">←</button><span id="inventory-page">1 / 1</span><button id="inventory-next" aria-label="次の部品ページ">→</button><small>1ページ48部品 · 大きさを揃えて表示</small></div>
+        <button id="reset" class="reset-button"><span aria-hidden="true">↺</span> リセット</button>
+      </div>
+      <div class="interaction-hint">ドラッグで回転 <span>·</span> ホイールで拡大 <span>·</span> 部位をクリックして解説 <span class="keyboard-hint">· 矢印キーで回転</span></div>
+    </section>
+    <aside id="detail-panel" class="detail-panel" aria-label="選択した部位の解説">
+      <div class="detail-top"><span class="eyebrow">A CLOSER LOOK</span><span id="selection-kind" class="selection-kind">部位の解説</span></div>
+      <div id="detail-preview" class="detail-preview" aria-label="選択部位の3Dプレビュー"><span class="preview-cross">＋</span><span class="preview-caption">ANATOMICAL STUDY</span></div>
+      <div class="detail-copy"><span id="detail-system" class="detail-system">臓器 / ORGAN</span><h2 id="detail-title">心臓</h2><p id="detail-en" class="detail-en">Heart</p><div class="detail-rule"></div><p id="detail-description">部位を選ぶと、ここに解説が表示されます。</p><p id="description-scope" class="description-scope" hidden></p><div id="detail-meta" class="detail-meta"></div></div>
+      <div class="selection-actions"><button id="isolate" class="primary-button">この部位だけを見る <span>↗</span></button><div class="secondary-actions"><button id="focus-part">近づく</button><button id="hide-part">非表示にする</button></div><label class="ghost-toggle"><input type="checkbox" id="ghost"><span>周囲を透かして見る</span></label></div>
+      <div class="source-note"><span>REFERENCE</span><a id="description-source" target="_blank" rel="noopener noreferrer">解説の出典 ↗</a><a href="https://dbarchive.biosciencedbc.jp/en/bodyparts3d/download.html" target="_blank" rel="noopener noreferrer">3Dモデル：BodyParts3D ↗</a></div>
+      <div class="explore-next"><span class="eyebrow">EXPLORE NEXT</span><button id="next-organ">次は、肺を見てみよう <span>→</span></button></div>
+    </aside>
+  </main>
+  <footer class="footer"><span>HUMAN ATLAS <i>—</i> an open window into anatomy.</span><span>教育用の探索モデル <i>·</i> 左右は人体本人から見た向き</span><button id="footer-credits">データ・利用条件 ↗</button></footer>
+  <nav class="mobile-nav" aria-label="スマートフォン用ナビゲーション"><a href="#library">⌕ <span>部位を探す</span></a><a href="#explorer">⊕ <span>3Dを見る</span></a><a href="#detail-panel">≡ <span>解説を読む</span></a></nav>
+  <div id="status" role="status" aria-live="polite" class="toast" hidden></div>
+  <dialog id="help-dialog"><button class="dialog-close" aria-label="閉じる">×</button><span class="eyebrow">HOW TO EXPLORE</span><h2>ひとつ動かすと、<br>ひとつ、わかる。</h2><div class="guide-steps"><div><b>01</b><h3>回して、見つける</h3><p>ドラッグで回転。ホイールやピンチで拡大。右ドラッグ・2本指で平行移動できます。キーボードでは3Dエリアに移動して矢印キーで回転します。</p></div><div><b>02</b><h3>気になる部位を選ぶ</h3><p>モデルや左の一覧から選択します。「この部位だけを見る」で取り出し、「近づく」で細部を観察できます。</p></div><div><b>03</b><h3>構造をひらく</h3><p>下のスライダーで部品を離し、0%に戻すと元の配置へ。「部品を並べる」では48個ずつ一覧できます。分解表示は位置関係を知るための模式的な移動です。</p></div></div><p class="dialog-note">主要部位は日本語・英語で検索できます。個別部品名は原典の英語表記を保持しています。いつでも「リセット」で初期表示に戻れます。</p><button class="primary-button dialog-close-action">探索をはじめる →</button></dialog>
+  <dialog id="credits-dialog"><button class="dialog-close" aria-label="閉じる">×</button><span class="eyebrow">ABOUT THIS ATLAS</span><h2>実際のデータから、<br>立体的な理解へ。</h2><p>BodyParts3D 4.0のIS-Aモデル2,234部品を収録した、日本語の教育用3D図鑑です。臓器の数ではなく、モデルを構成する部品の数です。</p><h3>3Dデータ</h3><p>BodyParts3D, © The Database Center for Life Science licensed under CC Attribution 4.0 International</p><p>元データの形状と組み立て位置を保持し、表示用の形式・座標軸・色・分類を変更しています。分解と一覧表示は解説用の配置です。</p><p><a href="https://dbarchive.biosciencedbc.jp/en/bodyparts3d/lic.html" target="_blank" rel="noopener noreferrer">配布元の現行利用条件 ↗</a> · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0 ↗</a></p><h3>解説・表示</h3><p>主要臓器や系統の概要はNIH各機関の資料に基づき、各カードに出典を記載しています。個別部品のカードには、その部品が属する臓器・系統の概要であることを表示します。診断・治療を目的としたものではありません。</p><p>Three.js 0.180.0 / MIT License。ライブラリとモデルは同梱。起動後の探索に外部通信は必要ありません（出典リンクを開く場合を除く）。</p></dialog>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

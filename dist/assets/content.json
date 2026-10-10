@@ -1,0 +1,74 @@
+{
+  "heart": {
+    "title": "心臓",
+    "description": "胸の中央、肺の近くにあり、筋肉に囲まれた4つの部屋からできています。心房が血液を受け取り、心室が肺や全身へ送り出し、弁が逆流を防ぎます。",
+    "sourceTitle": "NHLBI / NIH — What the Heart Looks Like",
+    "sourceUrl": "https://www.nhlbi.nih.gov/health/heart/anatomy"
+  },
+  "lungs": {
+    "title": "肺",
+    "description": "胸の中で心臓の左右に位置する、呼吸を担う一対の臓器です。内部の肺胞では、空気中の酸素が血液へ、血液中の二酸化炭素が空気へ移ります。",
+    "sourceTitle": "NHLBI / NIH — The Respiratory System",
+    "sourceUrl": "https://www.nhlbi.nih.gov/health/lungs/respiratory-system"
+  },
+  "leftLung": {
+    "title": "左肺",
+    "description": "左肺は2つの肺葉に分かれています。心臓のための空間があるため、右肺より少し小さくなっています。",
+    "sourceTitle": "NHLBI / NIH — The Respiratory System",
+    "sourceUrl": "https://www.nhlbi.nih.gov/health/lungs/respiratory-system"
+  },
+  "rightLung": {
+    "title": "右肺",
+    "description": "右肺は3つの肺葉に分かれています。気道から届いた空気は肺胞に入り、血液との間でガス交換を行います。",
+    "sourceTitle": "NHLBI / NIH — The Respiratory System",
+    "sourceUrl": "https://www.nhlbi.nih.gov/health/lungs/respiratory-system"
+  },
+  "liver": {
+    "title": "肝臓",
+    "description": "脂肪などの消化を助ける胆汁をつくります。腸で吸収された栄養を蓄えたり加工したりし、必要に応じて全身へ届けます。",
+    "sourceTitle": "NIDDK / NIH — Your Digestive System & How It Works",
+    "sourceUrl": "https://www.niddk.nih.gov/health-information/digestive-diseases/digestive-system-how-it-works"
+  },
+  "stomach": {
+    "title": "胃",
+    "description": "食べ物を筋肉の動きで胃酸や消化酵素と混ぜ、分解を進めます。混ざった内容物は少しずつ小腸へ送られます。",
+    "sourceTitle": "NIDDK / NIH — Your Digestive System & How It Works",
+    "sourceUrl": "https://www.niddk.nih.gov/health-information/digestive-diseases/digestive-system-how-it-works"
+  },
+  "kidneys": {
+    "title": "腎臓",
+    "description": "肋骨のすぐ下、背骨の左右にある豆のような形の臓器です。血液から老廃物や余分な水分を取り除いて尿をつくり、水分やミネラルのバランスを整えます。",
+    "sourceTitle": "NIDDK / NIH — Your Kidneys & How They Work",
+    "sourceUrl": "https://www.niddk.nih.gov/health-information/kidney-disease/kidneys-how-they-work"
+  },
+  "brain": {
+    "title": "脳",
+    "description": "感覚から届く情報を読み取り、思考や行動、体の動きに関わります。神経細胞がつながる回路を通して、脳のさまざまな領域が情報をやり取りします。",
+    "sourceTitle": "NINDS / NIH — Brain Basics",
+    "sourceUrl": "https://www.ninds.nih.gov/health-information/public-education/brain-basics"
+  },
+  "bones": {
+    "title": "骨格",
+    "description": "骨格は体を支え、筋肉と協力して動きを生み出します。頭蓋骨は脳を、肋骨は心臓や肺を守り、一部の骨の内部では骨髄が血液の細胞をつくります。",
+    "sourceTitle": "NIAMS / NIH — Health Lesson: Learning About Bones",
+    "sourceUrl": "https://www.niams.nih.gov/health-topics/educational-resources/health-lesson-learning-about-bones"
+  },
+  "muscles": {
+    "title": "筋肉",
+    "description": "筋肉は収縮と弛緩によって、体や体内のものを動かす組織です。骨格筋は骨や関節と働いて姿勢や動きを支え、平滑筋や心筋は消化や血液の循環などに関わります。",
+    "sourceTitle": "NIAMS / NIH — Health Lesson: Learning About Muscles",
+    "sourceUrl": "https://www.niams.nih.gov/health-topics/educational-resources/health-lesson-learning-about-muscles"
+  },
+  "vessels": {
+    "title": "血管",
+    "description": "心臓と体の各部をつなぐ、血液の通り道です。動脈は心臓から血液を送り出し、静脈は心臓へ血液を戻します。",
+    "sourceTitle": "NHLBI / NIH — How Blood Flows through the Heart",
+    "sourceUrl": "https://www.nhlbi.nih.gov/health/heart/blood-flow"
+  },
+  "nerves": {
+    "title": "末梢神経",
+    "description": "脳・脊髄と体の各部を結ぶ情報の通り道です。感覚の情報を中枢へ届けるほか、筋肉の収縮や内臓の働きに関わる信号も伝えます。",
+    "sourceTitle": "NINDS / NIH — Peripheral Neuropathy（末梢神経の役割）",
+    "sourceUrl": "https://www.ninds.nih.gov/health-information/disorders/peripheral-neuropathy"
+  }
+}

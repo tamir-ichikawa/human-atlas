@@ -1,0 +1,1 @@
+{"name":"human-atlas-local","version":"1.0.0","private":true,"type":"module","description":"Offline Japanese educational anatomy explorer using BodyParts3D 4.0","scripts":{"start":"node server.mjs","check":"node --check server.mjs && node --check dist/app.js"}}

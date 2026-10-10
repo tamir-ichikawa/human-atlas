@@ -1,0 +1,17 @@
+* text=auto
+.gitattributes text eol=lf
+.gitignore text eol=lf
+*.txt text eol=lf
+*.js text eol=lf
+*.mjs text eol=lf
+*.json text eol=lf
+*.html text eol=lf
+*.css text eol=lf
+*.md text eol=lf
+*.py text eol=lf
+*.svg text eol=lf
+*.cmd text eol=crlf
+*.gz binary
+*.png binary
+# Keep upstream vendor formatting without local whitespace enforcement.
+dist/vendor/** -whitespace

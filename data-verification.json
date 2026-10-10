@@ -1,0 +1,19 @@
+{
+  "parts": 2234,
+  "namedParts": 2217,
+  "sourceUnnamedParts": 17,
+  "triangles": 6681030,
+  "maximumAssemblyVertexErrorMetres": 5.047831535265335e-07,
+  "groups": {
+    "heart": 83,
+    "leftLung": 124,
+    "rightLung": 156,
+    "liver": 60,
+    "stomach": 1,
+    "kidneys": 2,
+    "brain": 59
+  },
+  "geometryChecks": "pass",
+  "sourceNameChecks": "pass",
+  "localDependencies": "pass"
+}
